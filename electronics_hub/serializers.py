@@ -24,12 +24,13 @@ class TradeNodeSerializer(serializers.ModelSerializer):
     """
     Сериализатор для модели TradeNode.
     """
+
     supplier = SupplierSerializer(read_only=True)  # Отображение информации о поставщике
     supplier_id = serializers.PrimaryKeyRelatedField(
         queryset=Supplier.objects.all(),
         source="supplier",
         write_only=True,
-        label="ID поставщика"
+        label="ID поставщика",
     )  # Поле для указания ID поставщика при создании/обновлении
 
     class Meta:

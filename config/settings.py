@@ -19,7 +19,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",  # Добавляем Django REST Framework
     "electronics_hub",  # Добавляем Django REST electronics_hub
-
 ]
 
 MIDDLEWARE = [
