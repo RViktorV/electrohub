@@ -1,6 +1,7 @@
 from rest_framework import viewsets, permissions
 from .models import Supplier, TradeNode
 from .serializers import SupplierSerializer, TradeNodeSerializer
+from .permissions import IsActiveStaff
 
 
 class SupplierViewSet(viewsets.ModelViewSet):
@@ -10,9 +11,7 @@ class SupplierViewSet(viewsets.ModelViewSet):
 
     queryset = Supplier.objects.all()  # Запрос для выборки всех поставщиков
     serializer_class = SupplierSerializer  # Сериализатор для поставщиков
-    permission_classes = [
-        permissions.IsAuthenticated
-    ]  # Только для авторизованных пользователей
+    permission_classes = [IsActiveStaff]  # Только для активных сотрудников
 
 
 class TradeNodeViewSet(viewsets.ModelViewSet):
@@ -22,9 +21,7 @@ class TradeNodeViewSet(viewsets.ModelViewSet):
 
     queryset = TradeNode.objects.all()  # Запрос для выборки всех узлов сети
     serializer_class = TradeNodeSerializer  # Сериализатор для узлов сети
-    permission_classes = [
-        permissions.IsAuthenticated
-    ]  # Только для авторизованных пользователей
+    permission_classes = [IsActiveStaff]  # Только для активных сотрудников
 
     def get_queryset(self):
         """
