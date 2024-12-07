@@ -1,11 +1,15 @@
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = "django-insecure-g_nw#7_$&u3=8tfr-%hcmu=thq!is6e-%4g)sts92809k+#b88"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = True
+DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = []
 
@@ -56,11 +60,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "electrohub",
-        "PASSWORD": "1q2w3e",
+        "NAME": os.getenv("NAME"),
         "USER": "postgres",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "PASSWORD": os.getenv("PASSWORD"),
+        "HOST": os.getenv("HOST"),
+        "PORT": os.getenv("PORT"),
     }
 }
 
